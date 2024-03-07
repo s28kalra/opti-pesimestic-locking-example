@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,13 +40,17 @@ public class Seat {
 	@Column(name = "status")
 	private Status status;
 
+	@Version
+	private int version;
+
 	@ManyToOne
 	@JoinColumn(name = "bus_id")
 	private Bus bus;
 
 	@Override
 	public String toString() {
-		return "Seat [seatId=" + seatId + ", seatType=" + seatType + ", status=" + status + "]";
+		return "Seat [seatId=" + seatId + ", seatType=" + seatType + ", status=" + status + ", version=" + version
+				+ "]";
 	}
 
 }

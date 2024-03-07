@@ -26,6 +26,8 @@ public class BusController {
 			busBookingService.bookBusSeats(busId, seatIds);
 		} catch (ObjectOptimisticLockingFailureException | StaleObjectStateException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}

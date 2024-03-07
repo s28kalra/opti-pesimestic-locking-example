@@ -37,9 +37,13 @@ public class LockingExampleApplication implements CommandLineRunner {
 		var wallets = Arrays.asList(new Wallet(1, 100.0), new Wallet(2, 200), new Wallet(1000, 400));
 		walletRepository.saveAll(wallets);
 
-		Seat seat = new Seat(101, SeatType.SEATER, Status.FREE, null);
-		Bus bus = new Bus(1, "delhi", "manali", 1, null, 0);
-		bus.addSeat(seat);
+		Seat seat1 = new Seat(101, SeatType.SEATER, Status.FREE, 1, null);
+		Seat seat2 = new Seat(102, SeatType.SEATER, Status.FREE, 1, null);
+		Bus bus = new Bus(1, "delhi", "manali", 0, null);
+		bus.addSeat(seat1);
+		bus.addSeat(seat2);
+		bus.setAvailableSeats(bus.getSeats().size());
+
 		busRepository.save(bus);
 	}
 

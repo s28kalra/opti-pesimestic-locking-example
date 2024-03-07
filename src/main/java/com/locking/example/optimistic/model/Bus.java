@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,9 +36,6 @@ public class Bus {
 	@OneToMany(mappedBy = "bus", cascade = CascadeType.ALL)
 	private List<Seat> seats;
 
-	@Version
-	private int version;
-
 	public void addSeat(Seat seat) {
 		if (this.seats == null)
 			this.seats = new ArrayList<>();
@@ -50,7 +46,7 @@ public class Bus {
 	@Override
 	public String toString() {
 		return "Bus [busId=" + busId + ", source=" + source + ", destination=" + destination + ", availableSeats="
-				+ availableSeats + ", version=" + version + "]";
+				+ availableSeats + "]";
 	}
 
 }
